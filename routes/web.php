@@ -72,8 +72,8 @@ Route::get('/contact', function () {
     ]);
 })->name('contact');
 
-Route::get('/table', function () {
+Route::get('/ltfu', function () {
     return view('ltfu', [
         'title' => 'LTFU',
     ]);
-})->name('contact');
+})->name('ltfu');
