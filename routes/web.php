@@ -1,7 +1,10 @@
 <?php
 
+
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\LtfuController;
+
 
 Route::get('/', function () {
     return view('home', [
@@ -72,8 +75,4 @@ Route::get('/contact', function () {
     ]);
 })->name('contact');
 
-Route::get('/ltfu', function () {
-    return view('ltfu', [
-        'title' => 'LTFU',
-    ]);
-})->name('ltfu');
+Route::resource('ltfu', LtfuController::class);
