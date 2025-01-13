@@ -4,6 +4,7 @@
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LtfuController;
+use App\Http\Controllers\ChatbotController;
 
 
 Route::get('/', function () {
@@ -76,3 +77,5 @@ Route::get('/contact', function () {
 })->name('contact');
 
 Route::resource('ltfu', LtfuController::class);
+
+Route::post('/chatbot/generate', [ChatbotController::class, 'generateResponse']);

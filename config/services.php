@@ -34,5 +34,9 @@ return [
             'channel' => env('SLACK_BOT_USER_DEFAULT_CHANNEL'),
         ],
     ],
+    'generative_api' => [
+        'key' => env('GENERATIVE_API_KEY'),
+        'url' => env('GENERATIVE_API_URL'),
+    ],
 
 ];
