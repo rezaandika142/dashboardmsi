@@ -11,9 +11,10 @@ class LTFU extends Model
 
     // Nama tabel (opsional jika tabelnya bukan 'ltfus')
     protected $table = 'ltfu';
+    
 
     // Kolom-kolom yang dapat diisi (mass assignable)
-    protected $fillable = [
+    protected $fillable = [ 
         'name',
         'age',
         'address',
