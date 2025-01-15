@@ -20,13 +20,13 @@ class LtfuController extends Controller
         // Query dengan pencarian (jika ada) dan pagination
         $ltfu = Ltfu::when($search, function ($query, $search) {
             return $query->where('name', 'like', "%{$search}%")
-                         ->orWhere('age', 'like', "%{$search}%")
-                         ->orWhere('address', 'like', "%{$search}%");
+                ->orWhere('age', 'like', "%{$search}%")
+                ->orWhere('address', 'like', "%{$search}%");
         })->orderBy('created_at', 'desc') // Tambahkan urutan berdasarkan waktu terbaru
-          ->paginate(10)
-          ->appends(['search' => $search]); // Menjaga query pencarian saat berpindah halaman
+            ->paginate(10)
+            ->appends(['search' => $search]); // Menjaga query pencarian saat berpindah halaman
 
-        return view('ltfu.index', compact('ltfu', 'title'));
+        return view('ltfu.index', compact('ltfu', 'title', 'search'));
     }
 
     /**

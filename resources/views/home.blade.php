@@ -34,6 +34,20 @@
               </div>
               <div style="padding-top: 100%;"></div> <!-- Membuat card persegi -->
           </div>
+          <div class="bg-gradient-to-br from-yellow-400 via-red-300 to-orange-300 shadow-lg hover:shadow-2xl 
+                      rounded-lg overflow-hidden relative transition duration-300 ease-in-out">
+              <div class="absolute inset-0 flex items-center justify-center">
+                  <div class="text-center">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 mx-auto text-white drop-shadow-lg mb-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                              d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0l6-6" />
+                      </svg>
+                      <h2 class="text-xl font-semibold text-white mb-1">Jumlah Data</h2>
+                      <p class="text-3xl font-bold text-white">{{ $dataRingkasan['dummyData'] }}</p>
+                  </div>
+              </div>
+              <div style="padding-top: 100%;"></div> <!-- Membuat card persegi -->
+          </div>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">

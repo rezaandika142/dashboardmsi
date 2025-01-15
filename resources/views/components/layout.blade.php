@@ -68,11 +68,11 @@
 
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script>
-        function chatBot() { // Membuat fungsi untuk mengelola state chat
+        function chatBot() {
             return {
                 isChatOpen: false,
                 messages: [{
-                    text: 'Hi there! How can I assist you today?',
+                    text: 'Halo saya Chatbot. Apa yang bisa saya bantu?',
                     sender: 'bot'
                 }],
                 userInput: '',
@@ -98,7 +98,7 @@
                             message: userMessage
                         });
 
-                        if (response.data && response.data.reply) { // Memeriksa struktur respons
+                        if (response.data && response.data.reply) {
                             this.messages.push({
                                 text: response.data.reply,
                                 sender: 'bot'
@@ -108,7 +108,7 @@
                                 text: 'Maaf, format balasan tidak sesuai.',
                                 sender: 'bot'
                             });
-                            console.error('Invalid API response:', response); // Log error untuk debug
+                            console.error('Invalid API response:', response);
                         }
 
                     } catch (error) {
