@@ -13,9 +13,18 @@ return new class extends Migration
 {
     Schema::create('ltfus', function (Blueprint $table) {
         $table->id();
-        $table->string('name');
+        $table->string('sr');
+        $table->string('ssr');
+        $table->string('province');
+        $table->string('city');
+        $table->string('patient_name');
+        $table->string('nik')->nullable();
+        $table->string('gender');
         $table->integer('age');
+        $table->string('subdistrict');
         $table->string('address');
+        $table->string('month');
+        $table->text('remarks')->nullable();
         $table->timestamps();
     });
 }
