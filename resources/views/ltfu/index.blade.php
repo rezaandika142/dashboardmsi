@@ -89,6 +89,9 @@
         @else
             <p class="text-center text-gray-500">Tidak ada data tersedia.</p>
         @endif
+        <div class="mt-4 flex justify-between items-center">
+            {{ $ltfu->appends(request()->except('page'))->links('pagination::tailwind') }}
+        </div>
     </div>
 
     <script>
