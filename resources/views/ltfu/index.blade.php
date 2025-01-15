@@ -8,9 +8,10 @@
            class="bg-emerald-500 hover:bg-emerald-700 text-white font-medium py-2 px-4 rounded-lg shadow-sm">
             Tambah Data LTFU
         </a>
-        <input type="text" id="searchInput" placeholder="Cari data..."
-            class="w-full md:w-1/3 px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-emerald-300 dark:bg-gray-700 dark:text-gray-100">
-
+        <form method="GET" action="{{ route('ltfu.index') }}" class="w-full md:w-1/3">
+            <input type="text" name="search" value="{{ $search ?? '' }}" placeholder="Cari data..."
+                class="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-emerald-300 dark:bg-gray-700 dark:text-gray-100">
+        </form>
         <!-- Tombol Import Excel -->
         <button id="importFileButton"
            class="bg-blue-500 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg shadow-sm">
@@ -38,8 +39,10 @@
 
     <!-- Tabel -->
     <div class="overflow-x-auto rounded-lg shadow-md bg-white dark:bg-gray-800 p-4">
+
         @if ($ltfu->isNotEmpty())
-            <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700" id="ltfuTable">
+            <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700 table-auto" id="ltfuTable">
+
                 <thead class="bg-emerald-50 dark:bg-emerald-900">
                     <tr>
                         <th class="px-4 py-2 text-left text-sm font-medium text-gray-700 dark:text-gray-300">No</th>
@@ -93,7 +96,7 @@
 
         <!-- Pagination -->
         <div class="mt-4 flex justify-between items-center">
-            {{ $ltfu->appends(request()->except('page'))->links('pagination::tailwind') }}
+            {{ $ltfu->links('pagination::tailwind') }}
         </div>
     </div>
 

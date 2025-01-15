@@ -27,7 +27,7 @@ class LtfuController extends Controller
           ->paginate(10)
           ->appends(['search' => $search]); // Menjaga query pencarian saat berpindah halaman.
 
-        return view('ltfu.index', compact('ltfu', 'title'));
+        return view('ltfu.index', compact('ltfu', 'title', 'search'));
     }
 
     /**
