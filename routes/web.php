@@ -1,5 +1,6 @@
 <?php
 
+
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LtfuController;
@@ -10,6 +11,7 @@ use App\Http\Controllers\HomeController;
 
 // Halaman Utama
 Route::get('/', [HomeController::class, 'index'])->name('home');
+
 
 // Halaman Tentang
 Route::get('/about', function () {
@@ -91,7 +93,7 @@ Route::post('/ltfu/import', [LtfuController::class, 'importStore'])->name('ltfu.
 // Chatbot
 Route::post('/chatbot/generate', [ChatbotController::class, 'generateResponse']);
 
-// Login, Register, dan Logout
+
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [AuthController::class, 'login']);
 Route::get('/register', [AuthController::class, 'showRegisterForm'])->name('register');

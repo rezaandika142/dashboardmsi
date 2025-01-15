@@ -6,11 +6,12 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 
-class Ltfu extends Model // Ubah dari LTFU menjadi Ltfu
+
+class Ltfu extends Model
 {
     use HasFactory;
 
-    protected $table = 'ltfu'; // Nama tabel
+    protected $table = 'ltfu';
 
     protected $fillable = [ 
         'sr',

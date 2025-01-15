@@ -7,11 +7,10 @@ use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Imports\LTFUImport;
 
+
 class LtfuController extends Controller
 {
-    /**
-     * Menampilkan data LTFU dengan fitur pencarian dan pagination.
-     */
+
     public function index(Request $request)
     {
         $title = 'LTFU Table';
@@ -150,5 +149,8 @@ class LtfuController extends Controller
         Excel::import(new LTFUImport, 'file.xlsx');
     }
 
-    
+    public function export()
+    {
+        return Excel::download(new LTFUImport, 'ltfu.xlsx');
+    }
 }

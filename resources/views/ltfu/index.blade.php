@@ -2,7 +2,7 @@
     <x-slot:title>LTFU Data</x-slot:title>
 
     <!-- Header -->
-    <div class="flex justify-between items-center mb-6">
+    <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 space-y-4 md:space-y-0">
         <!-- Tombol Tambah Data LTFU -->
         <a href="{{ route('ltfu.create') }}"
            class="bg-emerald-500 hover:bg-emerald-700 text-white font-medium py-2 px-4 rounded-lg shadow-sm">
@@ -87,14 +87,18 @@
                 </tbody>
             </table>
         @else
-            <p class="text-center text-gray-500">Tidak ada data tersedia.</p>
+
+            <p class="text-center text-gray-500 mt-4 dark:text-gray-400">Tidak ada data LTFU yang tersedia.</p>
         @endif
+
+        <!-- Pagination -->
         <div class="mt-4 flex justify-between items-center">
             {{ $ltfu->appends(request()->except('page'))->links('pagination::tailwind') }}
         </div>
     </div>
 
     <script>
+        // Search functionality
         // Filter table rows based on search input
         document.getElementById('searchInput').addEventListener('input', function () {
             let searchQuery = this.value.toLowerCase();

@@ -8,7 +8,7 @@ use App\Models\Ltfu;
 
 class LtfuTableSeeder extends Seeder
 {
-    
+
     /**
      * Run the database seeds.
      *
