@@ -56,6 +56,7 @@
             <label for="remarks" class="block text-sm font-medium text-gray-700 dark:text-gray-200">Remarks</label>
             <textarea name="remarks" id="remarks" rows="4" class="w-full px-4 py-2 mt-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-gray-100">{{ $ltfu->remarks }}</textarea>
         </div>
+        <button><a href="{{ route('ltfu.index') }}" class="px-4 py-2 text-white bg-red-600 rounded-lg hover:bg-red-700 focus:outline-none">Cancel</a></button>
         <button type="submit" class="px-4 py-2 text-white bg-blue-600 rounded-lg hover:bg-blue-700 focus:outline-none">Update</button>
     </form>
 </x-layout>

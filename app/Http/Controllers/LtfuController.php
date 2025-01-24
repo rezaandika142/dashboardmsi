@@ -35,7 +35,8 @@ class LtfuController extends Controller
      */
     public function create()
     {
-        return view('ltfu.create');
+        $title = 'LTFU Table';
+        return view('ltfu.create', compact('title'));
     }
 
     /**
@@ -135,13 +136,19 @@ class LtfuController extends Controller
      */
     public function importStore(Request $request)
     {
+        // Validasi file input
         $request->validate([
-            'file' => 'required|mimes:xlsx,xls',
+            'file' => 'required|file|mimes:xlsx,xls|max:2048', // Maksimal 2MB
         ]);
-
-        Excel::import(new LTFUImport, $request->file('file'));
-
-        return redirect()->route('ltfu.index')->with('success', 'Data berhasil diimpor.');
+    
+        try {
+            // Proses impor file
+            Excel::import(new LTFUImport, $request->file('file'));
+            return redirect()->route('ltfu.index')->with('success', 'Data berhasil diimpor.');
+        } catch (\Exception $e) {
+            // Tangani error dan tampilkan pesan kepada pengguna
+            return redirect()->route('ltfu.index')->with('error', 'Terjadi kesalahan saat mengimpor data. Pastikan format file sesuai.');
+        }
     }
 
     public function import()

@@ -7,33 +7,60 @@ use Illuminate\Support\Facades\Http;
 
 class ChatbotController extends Controller
 {
-    public function generateResponse(Request $request)
+    /**
+     * Tampilkan halaman chatbot di home.
+     *
+     * @return \Illuminate\View\View
+     */
+    public function index()
     {
-        $request->validate([
-            'message' => 'required|string',
-        ]);
+        return view('home'); // Pastikan file home.blade.php Anda ada di folder resources/views
+    }
 
-        $apiKey = env('GENERATIVE_API_KEY');
-        $apiUrl = env('GENERATIVE_API_URL');
+    /**
+     * Handle chatbot message and return reply.
+     *
+     * @param \Illuminate\Http\Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function handleMessage(Request $request)
+    {
+        $message = $request->input('message'); // Ambil pesan dari pengguna
 
         try {
-            $response = Http::post($apiUrl . '?key=' . $apiKey, [
+            // Kirim permintaan ke API Gemini
+            $response = Http::post(env('CHATBOT_API_URL'), [
                 'contents' => [
                     [
                         'parts' => [
-                            ['text' => $request->message]
+                            [
+                                'text' => $message
+                            ]
                         ]
                     ]
-                ],
+                ]
             ]);
-
-            $responseData = $response->json();
-            $botReply = $responseData['candidates'][0]['output'] ?? 'Maaf, saya tidak memahami permintaan Anda.';
-
-            return response()->json(['reply' => $botReply]);
+        
+            // Jika respons berhasil
+            if ($response->successful()) {
+                return response()->json([
+                    'status' => 'success',
+                    'reply' => $response->json(), // Pastikan key 'reply' sesuai struktur API Gemini
+                ]);
+            } else {
+                // Jika respons gagal
+                return response()->json([
+                    'status' => 'error',
+                    'message' => 'Maaf, chatbot tidak dapat memproses pesan Anda saat ini.',
+                ], $response->status());
+            }
         } catch (\Exception $e) {
+            // Tangani error
+            \Log::error('Chatbot Error: ' . $e->getMessage());
+
             return response()->json([
-                'error' => 'Terjadi kesalahan saat memproses permintaan.',
+                'status' => 'error',
+                'message' => 'Terjadi kesalahan saat memproses permintaan. Silakan coba lagi.',
             ], 500);
         }
     }

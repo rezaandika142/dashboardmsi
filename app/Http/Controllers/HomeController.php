@@ -9,26 +9,27 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $dummyData = 50;
+        
         $totalPasien = Ltfu::count(); // Total pasien
+        $ssr = Ltfu::distinct('ssr')->count(); // Jumlah SSR
         $jumlahAlamatUnik = Ltfu::distinct('address')->count(); // Jumlah alamat unik
 
         $dataRingkasan = [
             'total_pasien' => $totalPasien,
             'jumlah_alamat_unik' => $jumlahAlamatUnik,
-            'dummyData' => $dummyData
+            'ssr' => $ssr
         ];
 
-        $totalUsia = Ltfu::sum('age');
-        $jumlahData = Ltfu::count();
-        $jumlahAlamatUnik = Ltfu::distinct('address')->count();
+        $ssr = Ltfu::distinct('ssr')->count(); // Jumlah SSR
+        $jumlahData = Ltfu::count(); // Jumlah data
+        $jumlahAlamatUnik = Ltfu::distinct('address')->count(); // Jumlah alamat unik
 
         $data = [
-            'labels' => ['Jumlah Data', 'Jumlah Alamat', 'Dummy Data'],
+            'labels' => ['Jumlah Data', 'Jumlah Alamat', 'SSR'],
             'values' => [
                 $jumlahData,
                 $jumlahAlamatUnik,
-                $dummyData
+                $ssr
             ],
         ];
 
