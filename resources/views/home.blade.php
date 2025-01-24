@@ -131,7 +131,7 @@
 
                     try {
                         // Kirim pesan ke server melalui API
-                        const response = await fetch('', {
+                        const response = await fetch('isi link yang kukirim', {
                             method: 'POST',
                             body: JSON.stringify({
                                 contents: [
