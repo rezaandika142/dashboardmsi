@@ -3,6 +3,7 @@
 
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Http\Request;
 use App\Http\Controllers\LtfuController;
 use App\Http\Controllers\ChatbotController;
 use App\Http\Controllers\AuthController;
@@ -91,8 +92,21 @@ Route::get('/ltfu/import', [LtfuController::class, 'showImportForm'])->name('ltf
 Route::post('/ltfu/import', [LtfuController::class, 'importStore'])->name('ltfu.import.store');
 
 // Chatbot
-Route::post('/chatbot/generate', [ChatbotController::class, 'generateResponse']);
+// Route::post('/chatbot/generate', [ChatbotController::class, 'generateResponse']);
+// Route::post('/chatbot/generate', [ChatbotController::class, 'generateResponse'])->name('chatbot.generate');
+Route::post('/chatbot', [ChatbotController::class, 'handleChat'])->name('chatbot.handle');
+// Route::post('/chatbot', function (Request $request) {
+//     $message = $request->input('message');
+//     // Logic untuk mendapatkan respons chatbot
+//     $reply = "Ini respons dari chatbot untuk pesan: \"$message\".";
+//     return response()->json(['status' => 'success', 'reply' => $reply]);
+// });
+// Route::post('/chatbot', function (Request $request) {
+//     $message = $request->input('message');
+//     $reply = chatbot_reply($message);
 
+//     return response()->json(['reply' => $reply]);
+// });
 
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [AuthController::class, 'login']);
