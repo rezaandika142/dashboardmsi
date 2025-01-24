@@ -131,7 +131,7 @@
 
                     try {
                         // Kirim pesan ke server melalui API
-                        const response = await fetch('https://generativelanguage.googleapis.com/v1beta/tunedModels/number-generator-model-eaev4sr6toyj:generateContent?key=AIzaSyDyUIrVQX9287PhOLyzhQuoyBrQ4pvlLxM', {
+                        const response = await fetch('isi disini url yang kukirim', {
                             method: 'POST',
                             body: JSON.stringify({
                                 contents: [
